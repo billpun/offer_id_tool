@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html ng-app="Main" lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Offer ID Tool</title>
+    <meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link data-react-helmet="true" rel="icon" href="./img/favicon.ico">-->
+
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/main.js"></script>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+
+</head>
+
+<body ng-controller="MainController" ng-init="init()">
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Offer ID Tool</a>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 30px">
+
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Prefix</div>
+            </div>
+            <div class="col-md-9">
+                <input ng-model="prefix" style="width: 400px">
+            </div>
+        </div>
+
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Business Unit</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="target_bu" ng-options="o for o in business_units" style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Product</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="product" ng-options="o for o in products" style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Treatment Type</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="treatment_type" ng-options="o for o in treatment_types"
+                    style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Incentive Value</div>
+            </div>
+            <div class="col-md-9">
+                <input ng-model="incentive_value" style="width: 400px">
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Incentive Unit</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="incentive_unit" ng-options="o for o in incentive_units"
+                    style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Launch Month or Quarter</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="launch_mq" ng-options="o for o in launch_mqs" style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Launch Year</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="launch_year" ng-options="o for o in launch_years" style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Channel</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="channel" ng-options="o for o in channels" style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Page</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="page" ng-options="o for o in pages" style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Placement</div>
+            </div>
+            <div class="col-md-9">
+                <select ng-model="placement" ng-options="o for o in placements" style="width: 400px; height: 30px">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>iCMV</div>
+            </div>
+            <div class="col-md-9">
+                <input ng-model="icmv" style="width: 400px">
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>iCMV Sub Model</div>
+            </div>
+            <div class="col-md-9">
+                <input ng-model="icmv_sm" style="width: 400px">
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Response</div>
+            </div>
+            <div class="col-md-9">
+                <input ng-model="response" style="width: 400px">
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Response Sub Model</div>
+            </div>
+            <div class="col-md-9">
+                <input ng-model="response_sm" style="width: 400px">
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Misc</div>
+            </div>
+            <div class="col-md-9">
+                <input ng-model="misc" style="width: 400px">
+            </div>
+        </div>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-3">
+                <div>Offer ID</div>
+            </div>
+            <a href="" class="col-md-9" copy-to-clipboard="{{ get_offer_id() }}" data-placement="left"
+                data-toggle="tooltip" title="Click to copy" ng-click="displayTooltip = true"
+                ng-mouseleave="displayTooltip = false">
+                {{ get_offer_id() }}
+            </a>
+        </div>
+        <div class="row" ng-show="displayTooltip" style='position: absolute; right: 50px; bottom: 10px'>
+            <div class="col-md-12" style="background-color: rgba(0, 150, 0, 0.8); color: white;">
+                <div>Copied!</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
+</html>
